@@ -64,6 +64,10 @@ public class App {
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
     }
 
+    /**
+     * Method to display only the top 100
+     * @param stream    The stream to display
+     */
     static void display(Stream<Map.Entry<String, Long>> stream) {
         stream.limit(100).forEach(System.out::println);
     }
