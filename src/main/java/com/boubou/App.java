@@ -21,12 +21,13 @@ public class App {
 
         try (Scanner scanner = new Scanner(Resources.getResource(("les3moustquetaires.txt")).getFile())) {
 
-            // read text and count word
+            // read text and count words
             Stream<String> stream1 = Files.lines(Paths.get(scanner.nextLine()));
             Map<String, Long> wordAndCount = splitText(stream1);
 
-            // sorted and keep top 100
+            // sort
             Stream<Map.Entry<String, Long>> result = order(wordAndCount);
+            // display top 100
             display(result);
 
         }
@@ -55,7 +56,7 @@ public class App {
      * Method to reverse order the map by value
      *
      * @param wordAndCount The map to order by value
-     * @return The stream of the map ordered by value
+     * @return "The stream" of the map ordered by value
      */
     static Stream<Map.Entry<String, Long>> order(Map<String, Long> wordAndCount) {
         return wordAndCount
@@ -73,10 +74,10 @@ public class App {
     }
 
     /**
-     * Method to split a String and only keep word. Remove "a lot of" punctuations
+     * Method to split a string and only keep word. Remove "a lot of" punctuations
      *
      * @param line The String to parse
-     * @return The String array with only word in it
+     * @return The String array with only words in it
      */
     static String[] splitLine(String line) {
         return line.split("['.,\\/#!$%\\^&\\*;:{}=\\-_`~()\\[\\]«»?\\s\"]+");

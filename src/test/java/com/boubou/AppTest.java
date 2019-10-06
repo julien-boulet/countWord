@@ -53,7 +53,7 @@ class AppTest {
         assertEquals(result, App.splitText(test));
     }
 
-    // test sorted   .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+    // test sorted
 
     @Test
     public void orderTest() {
@@ -64,7 +64,7 @@ class AppTest {
         Map<String, Long> result = App.order(test).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
         assertEquals(result, test);
 
-        // test disorder map
+        // test disordered map
         Map<String, Long> expected = Map.of("a", 7L, "b", 6L, "c", 5L, "d", 4L, "e", 3L, "f", 2L, "g", 1L);
         test = Map.of("e", 3L, "b", 6L, "g", 1L, "c", 5L, "a", 7L, "d", 4L, "f", 2L);
         result = App.order(test).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));

@@ -51,6 +51,6 @@ splitLine is tested in splitText test.
 ![architecture](./readme-images/SonarQubeReport.png)
 
 Code coverage is only at 50% because of main and display is not tested.
-it is not necessary for me to test its.
+it is not necessary for me to test it.
 
 The two code smells is System.out.println.
