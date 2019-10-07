@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -19,18 +18,15 @@ public class App {
 
         final long startTime = System.nanoTime();
 
-        try (Scanner scanner = new Scanner(Resources.getResource(("les3moustquetaires.txt")).getFile())) {
+        // read text and count words
+        Stream<String> stream1 = Files.lines(Paths.get(Resources.getResource("les3moustquetaires.txt").getPath()));
+        Map<String, Long> wordAndCount = splitText(stream1);
 
-            // read text and count words
-            Stream<String> stream1 = Files.lines(Paths.get(scanner.nextLine()));
-            Map<String, Long> wordAndCount = splitText(stream1);
+        // sort
+        Stream<Map.Entry<String, Long>> result = order(wordAndCount);
+        // display top 100
+        display(result);
 
-            // sort
-            Stream<Map.Entry<String, Long>> result = order(wordAndCount);
-            // display top 100
-            display(result);
-
-        }
         final long endTime = System.nanoTime();
 
         System.out.printf("Execution time in millisecond : %d%n", TimeUnit.NANOSECONDS.toMillis(endTime - startTime));
